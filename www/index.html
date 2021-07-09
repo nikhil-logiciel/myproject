@@ -35,344 +35,63 @@
   </head>
   <body ng-app="starter">
 
-    <ion-pane>
+    <ion-pane ng-controller="MainCtrl">
+
       <!--header bar -->
       <ion-header-bar class="bar-royal">
-        <div class="title">Header</div>
-        </ion-header-bar>
-      
+         <div class="title">Header</div>
+      </ion-header-bar>
       <ion-content>
-      
-      <!--list item-->
-        <ul class="list">
-          <li class="item">
-            LIST INFO
-          </li>
-      </ul>
-       <!--list item inset-->
-      <div class="list list-inset">
-        <div class="item">
-          Raiders of the Lost Ark
-        </div>
-    </div>
-    <!--Card header & footer-->
-    <div class="card">
-      <div class="item item-divider">
-        I'm a Header in a Card!
-      </div>
-      <div class="item item-text-wrap">
-        This is a basic Card with some text.
-      </div>
-      </div>
-      <!--List cards-->
-      <div class="list card">
-       <a href="#" class="item item-icon-left">
-          <i class="icon ion-home"></i>
-          Enter home address
-        </a>
-        </div>
-       <!--card images-->
-        <div class="list card">
-        <a class="item item-icon-left assertive" href="#">
-          <i class="icon ion-music-note"></i>
-          Start listening
-        </a>
-       </div>
-      <!--Card Showcase-->
-       <div class="list card">
-         <div class="item item-avatar">
-          <img src="mcfly.jpg">
-          <h2>Marty McFly</h2>
-          <p>November 05, 1955</p>
-        </div>
-      
-        <div class="item item-body">
-          <img class="full-image" src="delorean.jpg">
-          <p>
-            This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-            the content is from a card-body consisting of an image and paragraph text. The footer
-            consists of tabs, icons aligned left, within the card-footer.
-          </p>
-          <p>
-            <a href="#" class="subdued">1 Like</a>
-            <a href="#" class="subdued">5 Comments</a>
-          </p>
-        </div>
-      </div>
-      <!--text input:Placeholder Labels-->
-      <div class="list">
-        <label class="item item-input">
-          <input type="text" placeholder="First Name">
-        </label>
-        <label class="item item-input">
-          <input type="text" placeholder="Last Name">
-        </label>
-        <label class="item item-input">
-          <textarea placeholder="Comments"></textarea>
-        </label>
-        <button class="button button-block button-energized">
-          ADD
-        </button>
-      </div>
-      <!--text input:Inline labels-->
-      <div class="list">
-        <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password">
-        </label>
-        <button class="button button-block button-dark">
-          Login
-        </button>
-      </div>
-      <!--text input:stacked labels-->
-      <div class="list">
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">First Name</span>
-          <input type="text" placeholder="John">
-        </label>
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Last Name</span>
-          <input type="text" placeholder="Suhr">
-        </label>
-        <button class="button button-block button-positive">
-          Submit
-        </button>
-        </div>
-        <!--floating inputs-->
-        <div class="list">
-          <label class="item item-input item-floating-label">
-            <span class="input-label">First Name</span>
-            <input type="text" placeholder="First Name">
-          </label>
-          <label class="item item-input item-floating-label">
-            <span class="input-label">Last Name</span>
-            <input type="text" placeholder="Last Name">
-          </label>
-          <button class="button button-block button-calm">
-            Create Account
-          </button>
-        </div>
-        <!--Inset Forms-->
-        <div class="list list-inset">
-          <label class="item item-input">
-            <input type="text" placeholder="First Name">
-          </label>
-          <label class="item item-input">
-            <input type="text" placeholder="Last Name">
-          </label>
-          <button class="button button-block button-royal">
-            Submit
-          </button>
-        </div>
-        <!--Inset inputs-->
-        <div class="list">
-           <div class="item item-input-inset">
-            <label class="item-input-wrapper">
-              <input type="text" placeholder="Email">
-            </label>
-            <button class="button button-small">
-              Submit
-            </button>
-          </div>
-        </div>
-        <!--Input icons-->
-        <div class="list list-inset">
-          <label class="item item-input">
-            <i class="icon ion-search placeholder-icon"></i>
-            <input type="text" placeholder="Search Here">
-          </label>
-        </div>
-        <!--HEADER INPUTS-->
-        <div class="bar bar-header item-input-inset">
-          <label class="item-input-wrapper">
-            <i class="icon ion-ios-search placeholder-icon"></i>
-            <input type="search" placeholder="Search">
-          </label>
-          <button class="button button-clear">
-            Cancel
-          </button>
-        </div>
-        <!--TOGGEL-->
-        <label class="toggle">
-          <input type="checkbox">
-          <div class="track">
-            <div class="handle"></div>
-          </div>
-       </label>
-       <!--TOGGLE WITH ITEM-->
-       <ul class="list">
-        <li class="item item-toggle">
-           HTML5
-           <label class="toggle toggle-assertive">
-             <input type="checkbox">
-             <div class="track">
-               <div class="handle"></div>
-             </div>
-           </label>
-        </li>
-      </ul>
-      <!--CHECKBOX-->
-      <ion-list>
-        <ion-checkbox ng-model="filter.red">ONE</ion-checkbox>
-        <ion-checkbox ng-model="filter.yellow">TWO</ion-checkbox>
-        <ion-checkbox ng-model="filter.pink">THREE</ion-checkbox>
-      </ion-list>
-      <!--RADIO BUTTON-->
-      <ion-list>
-        <ion-radio ng-model="choice" ng-value="'A'">Choose A</ion-radio>
-        <ion-radio ng-model="choice" ng-value="'B'">Choose B</ion-radio>
-      </ion-list>
-      <!--RANGE Setup-->
-      <div class="item range">
-        <i class="icon ion-volume-low"></i>
-        <input type="range" name="volume">
-        <i class="icon ion-volume-high"></i>
-      </div>
-      <div class="list">
-        <div class="item range range-positive">
-          <i class="icon ion-ios-sunny-outline"></i>
-          <input type="range" name="volume" min="0" max="100" value="42">
-          <i class="icon ion-ios-sunny"></i>
-        </div>
-      </div>
-      <!--SELECT Option-->
-      <div class="list">
-        <label class="item item-input item-select">
-          <div class="input-label">
-            Lightsaber
-          </div>
-          <select>
-            <option>Blue</option>
-            <option selected>Green</option>
-            <option>Red</option>
-          </select>
-        </label>
-      </div>
+          <!--Action Sheet & Backdrop-->
+          <button class="myClass" on-tap="show()">Open sheet</button>
+          <button class="myClass" on-tap="action()">Show backdrop</button>
+          <button class="myClass" on-tap="showPopup()">Show Popup</button>
 
-      <div class="list">
-        <label class="item item-input item-select">
-          <div class="input-label">
-            Choose Color
-          </div>
-          <select>
-            <option>Yellow</option>
-            <option selected>Orange</option>
-            <option>Purple</option>
-          </select>
-        </label>
-      </div>
-      <!--TABS-->
-      <div class="tabs">
-        <a class="tabs-royal">
-          Previous
-        </a>
-        <a class="tab-item">
-          Images
-        </a>
-        <a class="tab-item-hide">
-          Next
-        </a>
-      </div>
-      <!--ICONS ONLY TABS-->
-      <div class="tabs tabs-icon-only">
-        <a class="tab-item">
-          <i class="icon ion-home"></i>
-        </a>
-        <a class="tab-item">
-          <i class="icon ion-star"></i>
-        </a>
-        <a class="tab-item">
-          <i class="icon ion-gear-a"></i>
-        </a>
-      </div>
-      <!--TOP ICONS ONLY TABS-->
-      <div class="tabs tabs-icon-top">
-        <a class="tab-item">
-          <i class="icon ion-home"></i>
-          Home
-        </a>
-        <a class="tab-item">
-          <i class="icon ion-star"></i>
-          Favorites
-        </a>
-        <a class="tab-item">
-          <i class="icon ion-gear-a"></i>
-          Settings
-        </a>
-      </div>
-      <!--LEFT ICON TABS-->
-      <div class="tabs tabs-icon-left">
-        <a class="tab-item">
-          <i class="icon ion-home"></i>
-          Home
-        </a>
-        <a class="tab-item">
-          <i class="icon ion-star"></i>
-          Favorites
-        </a>
-        <a class="tab-item">
-          <i class="icon ion-gear-a"></i>
-          Settings
-        </a>
-      </div>
-      <!--STRIPED STYLE TABS-->
-      <div class="tabs-striped tabs-color-assertive">
-        <div class="tabs">
-          <a class="tab-item active" href="#">
-            <i class="icon ion-home"></i>
-            Test
-          </a>
-          <a class="tab-item" href="#">
-            <i class="icon ion-star"></i>
-            Favorites
-          </a>
-          <a class="tab-item" href="#">
-            <i class="icon ion-gear-a"></i>
-            Settings
-          </a>
-        </div>
-      </div>
-      <!--GRID:EVENLY SPACED COLUMN-->
-      <div class="row">
-        <div class="col">.col</div>
-        <div class="col">.col</div>
-        <div class="col">.col</div>
-        <div class="col">.col</div>
-        <div class="col">.col</div>
-      </div>
-      <!--GRID:EXPLICIT COLUMNS SIZES-->
-      <div class="row">
-        <div class="col col-50">.col.col-50</div>
-        <div class="col">.col</div>
-        <div class="col">.col</div>
-      </div>
-      
-      <div class="row">
-        <div class="col col-75">.col.col-75</div>
-        <div class="col">.col</div>
-      </div>
-      
-      <div class="row">
-        <div class="col">.col</div>
-        <div class="col col-75">.col.col-75</div>
-      </div>
-      
-      <div class="row">
-        <div class="col">.col</div>
-        <div class="col">.col</div>
-      </div>
-      
+          <!--FORM INPUTS: ionic checkbox-->
+          <ion-checkbox ng-model="isChecked">Option1</ion-checkbox>
+          <ion-checkbox ng-model="Checked">Option2</ion-checkbox>
+
+          <!--FORM INPUTS: ionic radio-->
+          <ion-radio ng-model="choice" ng-value="'A'">RED</ion-radio>
+          <ion-radio ng-model="choice" ng-value="'B'">YELLOW</ion-radio>
+
+          <!--FORM INPUTS: ionic toggle-->
+          <ion-toggle ng-model="airplaneMode" toggle-class="toggle-balanced">Airplane Mode</ion-toggle>
+          <ion-toggle ng-model="wifi" toggle-class="toggle-calm">WiFi</ion-toggle>
+
+          <!--GESTURES....ON HOLD-->
+          <button on-hold="show()" class="button">Hold</button>
+          <!--ON TAP-->
+          <button on-tap="show()" class="button">Tap</button>
+          <!--Double Tap-->
+          <button on-double-tap="show()" class="button">Double Tap</button>
+          <!--on touch-->
+          <button on-touch="action()" class="button">On Touch</button>
+          <!--on release-->
+          <button on-release="show()" class="button">Realse</button>
+          <!--on drag-->
+          <button on-drag="action()" class="button">Drag</button>
+          <!--drag up-->
+          <button on-drag-up="show()" class="button">Drag Up</button>
+          <!--drag right-->
+          <button on-drag-right="show()" class="button">Drag Right</button>
+          <!--drag down-->
+          <button on-drag-down="show()" class="button">Drag Down</button>
+          <!--Swipe -->
+          <button on-swipe-up="show()" class="button">Swipe Up</button>
+          <button on-swipe-down="show()" class="button">Swipe Down</button>
+          
 
 
-      
 
-     </ion-content>
+
+
+        </ion-content>
+    
     </ion-pane>
-   
+    <ion-footer-bar class="bar-dark">
+      <div class="title">footer</div>
+   </ion-footer-bar>
     
   </body>
 </html>

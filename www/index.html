@@ -41,11 +41,18 @@
       <ion-header-bar class="bar-royal">
          <div class="title">Header</div>
       </ion-header-bar>
-      <ion-content>
+      <ion-content >
           <!--Action Sheet & Backdrop-->
           <button class="myClass" on-tap="show()">Open sheet</button>
           <button class="myClass" on-tap="action()">Show backdrop</button>
           <button class="myClass" on-tap="showPopup()">Show Popup</button>
+          <button class="myClass" on-tap="openPopover($event)">Show PopOver</button>
+
+
+          <!--Ion Spinner-->
+        <ion-spinner icon="ripple"></ion-spinner>
+      
+         
 
           <!--FORM INPUTS: ionic checkbox-->
           <ion-checkbox ng-model="isChecked">Option1</ion-checkbox>
@@ -80,12 +87,57 @@
           <!--Swipe -->
           <button on-swipe-up="show()" class="button">Swipe Up</button>
           <button on-swipe-down="show()" class="button">Swipe Down</button>
-          
 
+          <!--LISTS-->
+          <ion-list>
+            <ion-item>Hello!</ion-item>
+            <ion-item href="#/detail">
+              Link to detail page
+            </ion-item>
+          </ion-list>
+          <!--ion delete button-->
+          <ion-list show-delete="shouldShowDelete">
+            <ion-item>
+              <ion-delete-button class="ion-minus-circled"></ion-delete-button>
+              Hello, list item!
+            </ion-item>
+          </ion-list>
+          <ion-toggle ng-model="shouldShowDelete">
+            Show Delete?
+          </ion-toggle>
+          <!--ion option button-->
+          <ion-list>
+            <ion-item>
+              I love kittens!
+              <ion-option-button class="button-positive">Share</ion-option-button>
+              <ion-option-button class="button-assertive">Edit</ion-option-button>
+            </ion-item>
+          </ion-list>
+          <!--IonListDelegate-->
+          <button class="button" ng-click="showDeleteButtons()">List Button </button>
+        <ion-list>
+          <ion-item ng-repeat="i in items">
+            Hello, {{i}}!
+           <ion-delete-button class="ion-minus-circled"></ion-delete-button>
+         </ion-item>
+       </ion-list>
 
+       <!--Tabs-->
+      <ion-tabs class="tabs-positive tabs-icon-top">
+        <ion-tab title="Home" icon-on="ion-ios-filing" icon-off="ion-ios-filing-outline">
+          <!-- Tab 1 content -->
+        </ion-tab>
+      
+        <ion-tab title="About" icon-on="ion-ios-clock" icon-off="ion-ios-clock-outline">
+          <!-- Tab 2 content -->
+        </ion-tab>
+      
+        <ion-tab title="Settings" icon-on="ion-ios-gear" icon-off="ion-ios-gear-outline">
+          <!-- Tab 3 content -->
+        </ion-tab>
+      </ion-tabs>
 
-
-
+      
         </ion-content>
     
     </ion-pane>

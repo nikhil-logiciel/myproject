@@ -1,6 +1,6 @@
 (function(){
 	'use strict';	
-		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup) {
+		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup,$ionicListDelegate,$ionicPopover) {
 			$scope.show = function() {
 
 				// Show the action sheet
@@ -72,14 +72,72 @@
 				$timeout(function() {
 				   myPopup.close(); //close the popup after 3 seconds for some reason
 				}, 3000);
-			   };
+			};
+
+			//ionListDelegate
+			$scope.showDeleteButtons = function() {
+				$ionicListDelegate.showDelete(true);
+			};   
+		// .fromTemplate() method
+  
+
+  
+
+  // .fromTemplateUrl() method
+  $ionicPopover.fromTemplateUrl('templates/my-popover.html', {
+    scope: $scope
+  }).then(function(popover) {
+    $scope.popover = popover;
+  });
+
+
+  $scope.openPopover = function(e) {
+    $scope.popover.show(e);
+  };
+  $scope.closePopover = function() {
+    $scope.popover.hide();
+  };
+  //Cleanup the popover when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.popover.remove();
+  });
+  // Execute action on hidden popover
+  $scope.$on('popover.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove popover
+  $scope.$on('popover.removed', function() {
+    // Execute action
+  });
+
+  $scope.options = {
+	loop: false,
+	effect: 'fade',
+	speed: 500,
+  }
+  
+  $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
+	// data.slider is the instance of Swiper
+	$scope.slider = data.slider;
+  });
+  
+  $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
+	console.log('Slide change is beginning');
+  });
+  
+  $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
+	// note: the indexes are 0-based
+	$scope.activeIndex = data.slider.activeIndex;
+	$scope.previousIndex = data.slider.previousIndex;
+  });
+  
 
 		}
 
 		
 		
 
-		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup'];
+		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup','$ionicListDelegate','$ionicPopover'];
 		angular
 			.module('starter')
 			.controller('MainCtrl',DemoCtrl);

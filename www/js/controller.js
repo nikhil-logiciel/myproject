@@ -1,6 +1,21 @@
 (function(){
 	'use strict';	
-		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup,$ionicListDelegate,$ionicPopover) {
+		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup,$ionicListDelegate,$ionicPopover,$ionicModal) {
+			$scope.items = [
+				{
+					title: 'Test1',
+					description: 'new test'	
+				},
+				{
+					title: 'Test2',
+					description: 'new test'	
+				}
+				
+			]
+			$scope.shouldShowDelete = false;
+			$scope.shouldShowReorder = false;
+			$scope.listCanSwipe = true
+
 			$scope.show = function() {
 
 				// Show the action sheet
@@ -76,60 +91,69 @@
 
 			//ionListDelegate
 			$scope.showDeleteButtons = function() {
-				$ionicListDelegate.showDelete(true);
-			};   
-		// .fromTemplate() method
-  
+				$scope.shouldShowDelete = !$scope.shouldShowDelete
+			}; 
+			$scope.showReorder = function() {
+				$scope.shouldShowReorder = !$scope.shouldShowReorder
+			};     
+			$scope.moveItem = function(item, fromIndex, toIndex) {
+				//Move the item in the array
+				$scope.items.splice(fromIndex, 1);
+				$scope.items.splice(toIndex, 0, item);
+			  };
+		
+				// .fromTemplateUrl() method
+			$ionicPopover.fromTemplateUrl('templates/my-popover.html', {
+					scope: $scope
+					}).then(function(popover) {
+					$scope.popover = popover;
+					});
 
-  
 
-  // .fromTemplateUrl() method
-  $ionicPopover.fromTemplateUrl('templates/my-popover.html', {
-    scope: $scope
-  }).then(function(popover) {
-    $scope.popover = popover;
-  });
+					$scope.openPopover = function(e) {
+					$scope.popover.show(e);
+					};
+					$scope.closePopover = function() {
+					$scope.popover.hide();
+					};
+					//Cleanup the popover when we're done with it!
+					$scope.$on('$destroy', function() {
+					$scope.popover.remove();
+					});
+					// Execute action on hidden popover
+					$scope.$on('popover.hidden', function() {
+					// Execute action
+					});
+					// Execute action on remove popover
+					$scope.$on('popover.removed', function() {
+					// Execute action
+					});
+		    //ion Modal
+			$ionicModal.fromTemplateUrl('templates/my-modal.html', {
+					scope: $scope,
+					animation: 'slide-in-up'
+				}).then(function(modal) {
+					$scope.modal = modal;
+				});
+				$scope.openModal = function() {
+					$scope.modal.show();
+				};
+				$scope.closeModal = function() {
+					$scope.modal.hide();
+				};
+				// Cleanup the modal when we're done with it!
+				$scope.$on('$destroy', function() {
+					$scope.modal.remove();
+				});
+				// Execute action on hide modal
+				$scope.$on('modal.hidden', function() {
+					// Execute action
+				});
+				// Execute action on remove modal
+				$scope.$on('modal.removed', function() {
+					// Execute action
+				});
 
-
-  $scope.openPopover = function(e) {
-    $scope.popover.show(e);
-  };
-  $scope.closePopover = function() {
-    $scope.popover.hide();
-  };
-  //Cleanup the popover when we're done with it!
-  $scope.$on('$destroy', function() {
-    $scope.popover.remove();
-  });
-  // Execute action on hidden popover
-  $scope.$on('popover.hidden', function() {
-    // Execute action
-  });
-  // Execute action on remove popover
-  $scope.$on('popover.removed', function() {
-    // Execute action
-  });
-
-  $scope.options = {
-	loop: false,
-	effect: 'fade',
-	speed: 500,
-  }
-  
-  $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
-	// data.slider is the instance of Swiper
-	$scope.slider = data.slider;
-  });
-  
-  $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
-	console.log('Slide change is beginning');
-  });
-  
-  $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
-	// note: the indexes are 0-based
-	$scope.activeIndex = data.slider.activeIndex;
-	$scope.previousIndex = data.slider.previousIndex;
-  });
   
 
 		}
@@ -137,7 +161,7 @@
 		
 		
 
-		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup','$ionicListDelegate','$ionicPopover'];
+		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup','$ionicListDelegate','$ionicPopover','$ionicModal'];
 		angular
 			.module('starter')
 			.controller('MainCtrl',DemoCtrl);

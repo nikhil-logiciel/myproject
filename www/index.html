@@ -47,6 +47,7 @@
           <button class="myClass" on-tap="action()">Show backdrop</button>
           <button class="myClass" on-tap="showPopup()">Show Popup</button>
           <button class="myClass" on-tap="openPopover($event)">Show PopOver</button>
+          <button class="myClass" on-tap="openModal()">Show Modal</button>
 
 
           <!--Ion Spinner-->
@@ -87,43 +88,41 @@
           <!--Swipe -->
           <button on-swipe-up="show()" class="button">Swipe Up</button>
           <button on-swipe-down="show()" class="button">Swipe Down</button>
+          <!--Ion List Item delete & Rearrange-->
+          <ion-list 
+                  show-delete="shouldShowDelete"
+                  show-reorder="shouldShowReorder"
+                  can-swipe="listCanSwipe">
+          <ion-item ng-repeat="item in items"
+                    class="item-thumbnail-left">
 
-          <!--LISTS-->
-          <ion-list>
-            <ion-item>Hello!</ion-item>
-            <ion-item href="#/detail">
-              Link to detail page
+            <h2>{{item.title}}</h2>
+            <p>{{item.description}}</p>
+            <ion-option-button class="button-positive"
+                              ng-click="share(item)">
+              Share
+            </ion-option-button>
+            <ion-option-button class="button-info"
+                              ng-click="edit(item)">
+              Edit
+            </ion-option-button>
+            <ion-delete-button class="ion-minus-circled"
+                              ng-click="items.splice($index, 1)">
+            </ion-delete-button>
+            <ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)">
+            </ion-reorder-button>
             </ion-item>
-          </ion-list>
-          <!--ion delete button-->
-          <ion-list show-delete="shouldShowDelete">
-            <ion-item>
-              <ion-delete-button class="ion-minus-circled"></ion-delete-button>
-              Hello, list item!
-            </ion-item>
-          </ion-list>
-          <ion-toggle ng-model="shouldShowDelete">
-            Show Delete?
-          </ion-toggle>
-          <!--ion option button-->
-          <ion-list>
-            <ion-item>
-              I love kittens!
-              <ion-option-button class="button-positive">Share</ion-option-button>
-              <ion-option-button class="button-assertive">Edit</ion-option-button>
-            </ion-item>
-          </ion-list>
-          <!--IonListDelegate-->
-          <button class="button" ng-click="showDeleteButtons()">List Button </button>
+            </ion-list>
+        <!--IonListDelegate-->
+          <button class="button" ng-click="showDeleteButtons()">Delete Button </button>
+          <button class="button" ng-click="showReorder()">Reorder Button </button>
         <ion-list>
-          <ion-item ng-repeat="i in items">
-            Hello, {{i}}!
-           <ion-delete-button class="ion-minus-circled"></ion-delete-button>
+          <ion-item ng-repeat="item in items">
          </ion-item>
        </ion-list>
+        
+       <ion-tabs class="tabs-positive tabs-icon-top">
 
-       <!--Tabs-->
-      <ion-tabs class="tabs-positive tabs-icon-top">
         <ion-tab title="Home" icon-on="ion-ios-filing" icon-off="ion-ios-filing-outline">
           <!-- Tab 1 content -->
         </ion-tab>
@@ -135,8 +134,13 @@
         <ion-tab title="Settings" icon-on="ion-ios-gear" icon-off="ion-ios-gear-outline">
           <!-- Tab 3 content -->
         </ion-tab>
+      
       </ion-tabs>
+      
+        
+       
 
+     
       
         </ion-content>
     

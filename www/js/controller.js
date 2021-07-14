@@ -3,15 +3,28 @@
 		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup,$ionicListDelegate,$ionicPopover,$ionicModal) {
 			$scope.items = [
 				{
-					title: 'Test1',
-					description: 'new test',
+					title: 'FirstName',
+					description: 'new test1',
+					
 				},
 				{
-					title: 'Test2',
-					description: 'new test',
+					title: 'SecondName',
+					description: 'new test2',
 				}
 			]
-
+			$scope.showAlert =function fun() {  
+				var alertPopup = $ionicPopup.alert({
+					title: 'Firstname',
+					template: 'Here is the description of Test1'
+				  });
+				
+			 }  
+			$scope.showAlert =function fun() {  
+				var alertPopup = $ionicPopup.alert({
+					title: 'Secondname',
+					template: 'Here is the description of Test2'
+				  });
+				}  
 			$scope.shouldShowDelete = false;
 			$scope.shouldShowReorder = false;
 			$scope.listCanSwipe = true
@@ -36,6 +49,7 @@
 				});
 
 			};
+			
             //Show a backdrop for one second
 			$scope.action = function() {
 				$ionicBackdrop.retain();
@@ -156,6 +170,7 @@
 			$scope.$on('modal.removed', function() {
 				// Execute action
 			});
+			
 
 		}
 

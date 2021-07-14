@@ -34,115 +34,31 @@
     <script src="js/controller.js"></script>
   </head>
   <body ng-app="starter">
-
     <ion-pane ng-controller="MainCtrl">
-
       <!--header bar -->
       <ion-header-bar class="bar-royal">
          <div class="title">Header</div>
       </ion-header-bar>
-      <ion-content >
-          <!--Action Sheet & Backdrop-->
-          <button class="myClass" on-tap="show()">Open sheet</button>
-          <button class="myClass" on-tap="action()">Show backdrop</button>
-          <button class="myClass" on-tap="showPopup()">Show Popup</button>
-          <button class="myClass" on-tap="openPopover($event)">Show PopOver</button>
-          <button class="myClass" on-tap="openModal()">Show Modal</button>
+    <ion-content >
+      <!--FORM INPUTS: ionic radio-->
+        <ion-radio ng-model="choice" on-tap="items">List Item 1</ion-radio>
+        <ion-radio ng-model="choice" ng-value="items">List Item 2</ion-radio>
+     <ion-list>
+        <ion-item ng-repeat="item in items"class="item-thumbnail-left">
+        <img ng-src="{{item.img}}">
+        <h2>{{item.title}}</h2>
+        <p>{{item.description}}</p>
+        <button class="button button-positive" ng-click="showAlert()">Tap</button>
+        <ion-option-button class="button-positive"ng-click="share(item)">
+            Share
+        </ion-option-button>
+        <ion-option-button class="button-info"ng-click="edit(item)">
+           Edit
+        </ion-option-button>
+        </ion-item>
+      </ion-list>
 
-
-          <!--Ion Spinner-->
-        <ion-spinner icon="ripple"></ion-spinner>
-      
-         
-
-          <!--FORM INPUTS: ionic checkbox-->
-          <ion-checkbox ng-model="isChecked">Option1</ion-checkbox>
-          <ion-checkbox ng-model="Checked">Option2</ion-checkbox>
-
-          <!--FORM INPUTS: ionic radio-->
-          <ion-radio ng-model="choice" ng-value="'A'">RED</ion-radio>
-          <ion-radio ng-model="choice" ng-value="'B'">YELLOW</ion-radio>
-
-          <!--FORM INPUTS: ionic toggle-->
-          <ion-toggle ng-model="airplaneMode" toggle-class="toggle-balanced">Airplane Mode</ion-toggle>
-          <ion-toggle ng-model="wifi" toggle-class="toggle-calm">WiFi</ion-toggle>
-
-          <!--GESTURES....ON HOLD-->
-          <button on-hold="show()" class="button">Hold</button>
-          <!--ON TAP-->
-          <button on-tap="show()" class="button">Tap</button>
-          <!--Double Tap-->
-          <button on-double-tap="show()" class="button">Double Tap</button>
-          <!--on touch-->
-          <button on-touch="action()" class="button">On Touch</button>
-          <!--on release-->
-          <button on-release="show()" class="button">Realse</button>
-          <!--on drag-->
-          <button on-drag="action()" class="button">Drag</button>
-          <!--drag up-->
-          <button on-drag-up="show()" class="button">Drag Up</button>
-          <!--drag right-->
-          <button on-drag-right="show()" class="button">Drag Right</button>
-          <!--drag down-->
-          <button on-drag-down="show()" class="button">Drag Down</button>
-          <!--Swipe -->
-          <button on-swipe-up="show()" class="button">Swipe Up</button>
-          <button on-swipe-down="show()" class="button">Swipe Down</button>
-          <!--Ion List Item delete & Rearrange-->
-          <ion-list 
-                  show-delete="shouldShowDelete"
-                  show-reorder="shouldShowReorder"
-                  can-swipe="listCanSwipe">
-          <ion-item ng-repeat="item in items"
-                    class="item-thumbnail-left">
-
-            <h2>{{item.title}}</h2>
-            <p>{{item.description}}</p>
-            <ion-option-button class="button-positive"
-                              ng-click="share(item)">
-              Share
-            </ion-option-button>
-            <ion-option-button class="button-info"
-                              ng-click="edit(item)">
-              Edit
-            </ion-option-button>
-            <ion-delete-button class="ion-minus-circled"
-                              ng-click="items.splice($index, 1)">
-            </ion-delete-button>
-            <ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)">
-            </ion-reorder-button>
-            </ion-item>
-            </ion-list>
-        <!--IonListDelegate-->
-          <button class="button" ng-click="showDeleteButtons()">Delete Button </button>
-          <button class="button" ng-click="showReorder()">Reorder Button </button>
-        <ion-list>
-          <ion-item ng-repeat="item in items">
-         </ion-item>
-       </ion-list>
-        
-       <ion-tabs class="tabs-positive tabs-icon-top">
-
-        <ion-tab title="Home" icon-on="ion-ios-filing" icon-off="ion-ios-filing-outline">
-          <!-- Tab 1 content -->
-        </ion-tab>
-      
-        <ion-tab title="About" icon-on="ion-ios-clock" icon-off="ion-ios-clock-outline">
-          <!-- Tab 2 content -->
-        </ion-tab>
-      
-        <ion-tab title="Settings" icon-on="ion-ios-gear" icon-off="ion-ios-gear-outline">
-          <!-- Tab 3 content -->
-        </ion-tab>
-      
-      </ion-tabs>
-      
-        
-       
-
-     
-      
-        </ion-content>
+    </ion-content>
     
     </ion-pane>
     <ion-footer-bar class="bar-dark">

@@ -1,30 +1,25 @@
 (function(){
 	'use strict';	
 		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup,$ionicListDelegate,$ionicPopover,$ionicModal) {
-			$scope.items = [
-				{
-					title: 'FirstName',
-					description: 'new test1',
-					
-				},
-				{
-					title: 'SecondName',
-					description: 'new test2',
-				}
-			]
-			$scope.showAlert =function fun() {  
-				var alertPopup = $ionicPopup.alert({
-					title: 'Firstname',
-					template: 'Here is the description of Test1'
-				  });
-				
-			 }  
-			$scope.showAlert =function fun() {  
-				var alertPopup = $ionicPopup.alert({
-					title: 'Secondname',
-					template: 'Here is the description of Test2'
-				  });
-				}  
+			
+			$scope.dataToShow = {};
+
+			$scope.list =[{
+				firstname: 'Nikhil'
+			},{
+				firstname: 'Rahul'
+			}]
+
+			$scope.showData = function(item){
+				$scope.dataToShow = item;
+
+			}
+			$scope.removedata = function() {
+				$scope.dataToShow = {};
+			}
+			$scope.push =function(){
+				$scope.list = [];
+			}
 			$scope.shouldShowDelete = false;
 			$scope.shouldShowReorder = false;
 			$scope.listCanSwipe = true

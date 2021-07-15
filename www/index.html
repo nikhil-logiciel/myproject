@@ -36,30 +36,25 @@
   <body ng-app="starter">
     <ion-pane ng-controller="MainCtrl">
       <!--header bar -->
-      <ion-header-bar class="bar-royal">
+      <ion-header-bar class="bar-calm">
          <div class="title">Header</div>
       </ion-header-bar>
     <ion-content >
-      <!--FORM INPUTS: ionic radio-->
-        <ion-radio ng-model="choice" on-tap="items">List Item 1</ion-radio>
-        <ion-radio ng-model="choice" ng-value="items">List Item 2</ion-radio>
-     <ion-list>
-        <ion-item ng-repeat="item in items"class="item-thumbnail-left">
-        <img ng-src="{{item.img}}">
-        <h2>{{item.title}}</h2>
-        <p>{{item.description}}</p>
-        <button class="button button-positive" ng-click="showAlert()">Tap</button>
-        <ion-option-button class="button-positive"ng-click="share(item)">
-            Share
-        </ion-option-button>
-        <ion-option-button class="button-info"ng-click="edit(item)">
-           Edit
-        </ion-option-button>
-        </ion-item>
-      </ion-list>
-
+        <ion-list ng-repeat="item in list">
+         <ion-item>
+           {{item.firstname}}
+           <button ng-click="showData(item)">Show</button>
+         </ion-item>
+        </ion-list>
+        
+        <ion-card ng-show="dataToShow.firstname">
+          Firstname: {{dataToShow.firstname}}
+        </ion-card>
+      
+        <button ng-click="removedata()" ng-if="dataToShow.firstname">Remove</button>
+        <input type="text" placeholder="First Name">
+         <button ng-click="push()">add here</button>
     </ion-content>
-    
     </ion-pane>
     <ion-footer-bar class="bar-dark">
       <div class="title">footer</div>

@@ -1,7 +1,7 @@
 (function(){
 	'use strict';	
 		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup,$ionicListDelegate,$ionicPopover,$ionicModal) {
-			
+			//using list item with arrary
 			$scope.dataToShow = {};
 
 			$scope.list =[{
@@ -10,6 +10,10 @@
 				firstname: 'Rahul'
 			}]
 
+			$scope.inputData = {
+				name: ''
+			}
+
 			$scope.showData = function(item){
 				$scope.dataToShow = item;
 
@@ -17,9 +21,34 @@
 			$scope.removedata = function() {
 				$scope.dataToShow = {};
 			}
-			$scope.push =function(){
-				$scope.list = [];
+			$scope.pushData = function(test){
+				$scope.list.push({
+					firstname: $scope.inputData.name 
+				}) 
+				$scope.inputData.name = ''
 			}
+			//using filter for search letter
+			$scope.names = [
+				'One',
+				'Two',
+				'Three',
+				'Four',
+				'Five',
+				'Six',
+				'Seven',
+				'Eight',
+				'Nine'
+			];
+			//using filter for replace
+			$scope.names1 = function(){
+				return function (x,replacewith){
+					return text.join(replacewith)
+				}
+			};
+			
+
+			
+			
 			$scope.shouldShowDelete = false;
 			$scope.shouldShowReorder = false;
 			$scope.listCanSwipe = true

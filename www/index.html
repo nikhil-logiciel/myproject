@@ -42,18 +42,41 @@
     <ion-content >
         <ion-list ng-repeat="item in list">
          <ion-item>
-           {{item.firstname}}
+           {{item.firstname | uppercase}}
            <button ng-click="showData(item)">Show</button>
          </ion-item>
         </ion-list>
         
         <ion-card ng-show="dataToShow.firstname">
-          Firstname: {{dataToShow.firstname}}
+          Firstname: {{dataToShow.firstname | uppercase}}
         </ion-card>
       
         <button ng-click="removedata()" ng-if="dataToShow.firstname">Remove</button>
-        <input type="text" placeholder="First Name">
-         <button ng-click="push()">add here</button>
+        <input type="text" placeholder="First Name" ng-model="inputData.name" />
+         <button on-tap="pushData()">add here</button>
+        
+        <!--Using Filter for search letter --> 
+        <div>
+          <p>Type a letter in the input field:</p>
+          <input type="text" placeholder="Type Here" ng-model="test">
+          <ul>
+            <li ng-repeat="x in names | filter:test">
+            {{ x }}
+             </li>
+          </ul>
+        </div>
+        
+        <!--Using Filter for replace letter-->
+        <div>
+          <ul>
+            <li ng-repeat="x in names1">
+                {{x | myFormat: '&'}}
+            </li>
+            </ul>
+        </div>
+
+
+
     </ion-content>
     </ion-pane>
     <ion-footer-bar class="bar-dark">

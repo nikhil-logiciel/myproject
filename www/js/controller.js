@@ -13,7 +13,38 @@
 			$scope.inputData = {
 				name: ''
 			}
+			// using filter for currency
+			$scope.price = 58;
 
+			//using filter for replace
+			$scope.names = [
+				'01-10-1000'
+			];
+			//using filter to replace values
+			$scope.numbers =[
+				'One',
+				'Two',
+				'Three',
+				'Four',
+				'Five',
+				'Six',
+				'Seven',
+				'Eight',
+				'Nine'
+
+			]
+			//using user defined filter (show value divided by 2)
+			$scope.studentlist =[
+				{name:'Nikhil',value:1},
+				{name:'Rahul',value:2},
+				{name:'Amit',value:3},
+				{name:'Neeraj',value:4},
+				{name:'Dheeraj',value:5},
+				{name:'Rohan',value:6},
+				{name:'Varun',value:7},
+				{name:'Kamal',value:8},
+			]
+			
 			$scope.showData = function(item){
 				$scope.dataToShow = item;
 
@@ -22,13 +53,13 @@
 				$scope.dataToShow = {};
 			}
 			$scope.pushData = function(test){
-				$scope.list.push({
+				$scope.list.push({ 
 					firstname: $scope.inputData.name 
 				}) 
 				$scope.inputData.name = ''
 			}
 			//using filter for search letter
-			$scope.names = [
+			$scope.names1 = [
 				'One',
 				'Two',
 				'Three',
@@ -39,16 +70,7 @@
 				'Eight',
 				'Nine'
 			];
-			//using filter for replace
-			$scope.names1 = function(){
-				return function (x,replacewith){
-					return text.join(replacewith)
-				}
-			};
-			
-
-			
-			
+		
 			$scope.shouldShowDelete = false;
 			$scope.shouldShowReorder = false;
 			$scope.listCanSwipe = true
@@ -203,7 +225,7 @@
 
 		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup','$ionicListDelegate','$ionicPopover','$ionicModal'];
 		angular
-			.module('starter')
+			.module('starter',)
 			.controller('MainCtrl',DemoCtrl);
 	})();
 	

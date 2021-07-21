@@ -1,7 +1,6 @@
 (function(){
 	'use strict';	
-		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup,$ionicListDelegate,$ionicPopover,
-			$ionicModal,hexavalue,count,api) {
+		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup,$ionicListDelegate,$ionicPopover, $ionicModal,hexavalue,count,apiService) {
 			//using list item with arrary
 			$scope.dataToShow = {};
 
@@ -16,9 +15,10 @@
 			}
 			//Hitting API request
 			$scope.data = [];
-			  api.getData().then(function(response){
+			apiService.getDataFromApi().then(function(response){
 				if(response) {
 					$scope.data = response;
+					console.log($scope.data)
 				}
 			}, function(err){
 				console.log(err)
@@ -238,8 +238,7 @@
 		
 		
 
-		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup','$ionicListDelegate','$ionicPopover'
-		,'$ionicModal','hexavalue','count','api'];
+		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup','$ionicListDelegate','$ionicPopover' ,'$ionicModal','hexavalue','count','apiService'];
 		angular
 			.module('starter')
 			.controller('MainCtrl',DemoCtrl);

@@ -1,6 +1,7 @@
 (function(){
 	'use strict';	
-		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup,$ionicListDelegate,$ionicPopover,$ionicModal) {
+		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup,$ionicListDelegate,$ionicPopover,
+			$ionicModal,hexavalue,count,api) {
 			//using list item with arrary
 			$scope.dataToShow = {};
 
@@ -13,6 +14,21 @@
 			$scope.inputData = {
 				name: ''
 			}
+			//Hitting API request
+			$scope.data = [];
+			  api.getData().then(function(response){
+				if(response) {
+					$scope.data = response;
+				}
+			}, function(err){
+				console.log(err)
+			})
+            // Hexa value
+			$scope.hex = hexavalue.myFunc(255);
+			// using user defined service to show count value
+			$scope.counts = count.myFunc(857);
+			//using servce to show array value
+			$scope.items = ['Arun', 'Rohan', 'Ram'];
 			// using filter for currency
 			$scope.price = 58;
 
@@ -31,7 +47,6 @@
 				'Seven',
 				'Eight',
 				'Nine'
-
 			]
 			//using user defined filter (show value divided by 2)
 			$scope.studentlist =[
@@ -223,9 +238,10 @@
 		
 		
 
-		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup','$ionicListDelegate','$ionicPopover','$ionicModal'];
+		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup','$ionicListDelegate','$ionicPopover'
+		,'$ionicModal','hexavalue','count','api'];
 		angular
-			.module('starter',)
+			.module('starter')
 			.controller('MainCtrl',DemoCtrl);
 	})();
 	

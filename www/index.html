@@ -118,8 +118,25 @@
             {{item.title}}
           </ion-item>
         </ion-list>
-
-    </ion-content>
+        <!--hitting $https  Post request-->
+        <div>
+          UserId: <input type="text" ng-model="userId">
+          Id: <input type="text" ng-model="id">
+          Title: <input type="text" ng-model="title">
+          <input type="button" value="send" ng-click="postdata(userId,id,title)">  
+        </div>
+         <p>Output message:{{msg}}</p>
+         <p>UserId:{{userId}}</p>
+         <p>Id:{{id}}</p>
+         <p>Title:{{title}}</p>
+         <!--hitting $https  Delete request-->
+         <div>
+          Hitting API  Delete request
+          <ion-item>
+            {{item.id}}
+          </ion-item>
+         </div>
+     </ion-content>
     </ion-pane>
     <ion-footer-bar class="bar-dark">
       <div class="title">footer</div>

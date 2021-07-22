@@ -13,12 +13,41 @@
 			$scope.inputData = {
 				name: ''
 			}
-			//Hitting API request
+			//Hitting API Get request
 			$scope.data = [];
 			apiService.getDataFromApi().then(function(response){
 				if(response) {
 					$scope.data = response;
 					console.log($scope.data)
+				}
+			}, function(err){
+				console.log(err)
+			})
+			//Hitting $https  Post request
+			$scope.postdata = function (userId,id,title){
+				
+				var data = {
+					userId: userId,
+					id: id,
+					title: title,
+				}
+			}
+			//Hitting $https  Delete request
+			$scope.data = [];
+			apiService.deleteDataFromApi().then(function(response){
+				if(response) {
+					$scope.data = response;
+					console.log($scope.data2)
+				}
+			}, function(err){
+				console.log(err)
+			})
+			//Hitting $https  Update request
+			$scope.data = [];
+			apiService.putDataFromApi().then(function(response){
+				if(response) {
+					$scope.data = response;
+					console.log($scope.data3)
 				}
 			}, function(err){
 				console.log(err)
@@ -238,7 +267,8 @@
 		
 		
 
-		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup','$ionicListDelegate','$ionicPopover' ,'$ionicModal','hexavalue','count','apiService'];
+		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup','$ionicListDelegate','$ionicPopover' ,'$ionicModal','hexavalue','count'
+		,'apiService'];
 		angular
 			.module('starter')
 			.controller('MainCtrl',DemoCtrl);

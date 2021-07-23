@@ -44,14 +44,14 @@ angular
 		});
 		return promise;
 	}
-	this.postDataFromApi = function (userId,id,title){
+	this.postDataFromApi = function (userId,body,title){
 		var deferredAbort = $q.defer();
 		var request = $http({
 			method: 'post',
-            body: JSON.stringify({
-            title: 'foo',
-            body: 'bar',
-            userId: 1,
+            data: JSON.stringify({
+            title: title,
+            body: body,
+            userId: userId,
             }),
 			url: 'https://jsonplaceholder.typicode.com/posts',
 			timeout: deferredAbort.promise,
@@ -73,11 +73,11 @@ angular
 		});
 		return promise;
 	}
-	this.deleteDataFromApi = function (x){
+	this.deleteDataFromApi = function (id){
 		var deferredAbort = $q.defer();
 		var request = $http({
 			method: "delete",
-			url: 'https://jsonplaceholder.typicode.com/posts/1',
+			url: 'https://jsonplaceholder.typicode.com/posts/'+id,
 			timeout: deferredAbort.promise,
 		})
 		var promise = request.then(
@@ -106,7 +106,7 @@ angular
 		})
 		var promise = request.then(
 		function (response) {
-				return response.data;
+				return response.data3;
 		},
 		function () {
 			return $q.reject("Something went wrong");

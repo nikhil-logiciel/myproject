@@ -24,30 +24,23 @@
 				console.log(err)
 			})
 			//Hitting $https  Post request
-			$scope.postdata = function (userId,id,title){
-				
-				var data = {
-					userId: userId,
-					id: id,
-					title: title,
-				}
+			$scope.postdata = function (userId,body,title){
+				apiService.postDataFromApi(userId,body,title).then(function(response){
+					$scope.data.push(response)
+				})
 			}
 			//Hitting $https  Delete request
-			$scope.data = [];
-			apiService.deleteDataFromApi().then(function(response){
-				if(response) {
-					$scope.data = response;
-					console.log($scope.data2)
-				}
-			}, function(err){
-				console.log(err)
-			})
+			$scope.deletedata = function (item,$index){
+				apiService.deleteDataFromApi(item).then(function(response){
+					$scope.data.splice($index)
+				})
+			}		 
 			//Hitting $https  Update request
 			$scope.data = [];
 			apiService.putDataFromApi().then(function(response){
 				if(response) {
 					$scope.data = response;
-					console.log($scope.data3)
+					console.log($scope.data)
 				}
 			}, function(err){
 				console.log(err)
@@ -114,6 +107,19 @@
 				'Eight',
 				'Nine'
 			];
+			//Overview of $broadcast(), $emit() and $on()
+			//broadcast the event down
+			$scope.OnClick = function (evt) {
+				$scope.$broadcast("SendDown", "some data");
+			}
+			//handle SendDown event
+			$scope.$on("SendDown", function (evt, data) {
+				$scope.Message = "Inside SendDown handler of MyController1 : " + data;
+			});
+			//handle SendUp event
+			$scope.$on("SendUp", function (evt, data) {
+				$scope.Message = "Inside SendUp handler of MyController1 : " + data;
+			});
 		
 			$scope.shouldShowDelete = false;
 			$scope.shouldShowReorder = false;

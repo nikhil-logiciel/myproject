@@ -41,7 +41,7 @@
       <ion-header-bar class="bar-calm">
          <div class="title">Header</div>
       </ion-header-bar>
-    <ion-content >
+      <ion-content >
         <ion-list ng-repeat="item in list">
          <ion-item>
            {{item.firstname | uppercase}}
@@ -112,31 +112,45 @@
             <li ng-repeat="x in items">{{x | myFormat}}</li>
           </ul>
         </div>
-        <!--hitting $https request-->
+        <!--hitting $https  Get request-->
         <ion-list>
           <ion-item ng-repeat="item in data">
             {{item.title}}
+            <button ng-click="deletedata(item.id,$index)">Delete</button>
           </ion-item>
         </ion-list>
         <!--hitting $https  Post request-->
         <div>
           UserId: <input type="text" ng-model="userId">
-          Id: <input type="text" ng-model="id">
+          Body: <input type="text" ng-model="body">
           Title: <input type="text" ng-model="title">
-          <input type="button" value="send" ng-click="postdata(userId,id,title)">  
+          <input type="button" value="send" ng-click="postdata(userId,body,title)">  
         </div>
          <p>Output message:{{msg}}</p>
          <p>UserId:{{userId}}</p>
-         <p>Id:{{id}}</p>
+         <p>Body:{{body}}</p>
          <p>Title:{{title}}</p>
          <!--hitting $https  Delete request-->
-         <div>
+        <div>
           Hitting API  Delete request
           <ion-item>
             {{item.id}}
           </ion-item>
-         </div>
-     </ion-content>
+        </div>
+         <!--Overview of $broadcast(), $emit() and $on()-->
+        <div>
+          <input type="button" value="Broadcast Down" ng-click="OnClick($event)" />
+          <h4>{{Message}}</h4>
+        <div>
+          <h4>{{Message}}</h4>
+        <div>
+          <h4>{{Message}}</h4>
+          <input type="button" value="Emit Up" ng-click="OnClick($event)" />
+        </div>
+        </div>
+        </div>
+
+      </ion-content>
     </ion-pane>
     <ion-footer-bar class="bar-dark">
       <div class="title">footer</div>

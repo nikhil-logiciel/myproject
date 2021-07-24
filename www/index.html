@@ -117,6 +117,7 @@
           <ion-item ng-repeat="item in data">
             {{item.title}}
             <button ng-click="deletedata(item.id,$index)">Delete</button>
+            <button ng-click="putdata(userId,body,title)">Edit</button>
           </ion-item>
         </ion-list>
         <!--hitting $https  Post request-->
@@ -130,13 +131,7 @@
          <p>UserId:{{userId}}</p>
          <p>Body:{{body}}</p>
          <p>Title:{{title}}</p>
-         <!--hitting $https  Delete request-->
-        <div>
-          Hitting API  Delete request
-          <ion-item>
-            {{item.id}}
-          </ion-item>
-        </div>
+         
          <!--Overview of $broadcast(), $emit() and $on()-->
         <div>
           <input type="button" value="Broadcast Down" ng-click="OnClick($event)" />

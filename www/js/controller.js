@@ -34,17 +34,16 @@
 				apiService.deleteDataFromApi(item).then(function(response){
 					$scope.data.splice($index)
 				})
-			}		 
+			}	
+			$scope.putdata = function(userId,body,title) {
+				
+			  };	 
 			//Hitting $https  Update request
-			$scope.data = [];
-			apiService.putDataFromApi().then(function(response){
-				if(response) {
-					$scope.data = response;
-					console.log($scope.data)
-				}
-			}, function(err){
-				console.log(err)
-			})
+			$scope.putdata = function (userId,body,title){
+				apiService.putDataFromApi(userId,body,title).then(function(response){
+					
+				})
+			}
             // Hexa value
 			$scope.hex = hexavalue.myFunc(255);
 			// using user defined service to show count value

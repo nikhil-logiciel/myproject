@@ -97,16 +97,21 @@ angular
 		});
 		return promise;
 	}
-	this.putDataFromApi = function (x){
+	this.putDataFromApi = function (userId,body,title){
 		var deferredAbort = $q.defer();
 		var request = $http({
 			method: "put",
+			data: JSON.stringify({
+			title: title,
+			body: body,
+			userId: userId,
+			}),
 			url: 'https://jsonplaceholder.typicode.com/posts/1',
 			timeout: deferredAbort.promise,
 		})
 		var promise = request.then(
 		function (response) {
-				return response.data3;
+				return response.data;
 		},
 		function () {
 			return $q.reject("Something went wrong");
